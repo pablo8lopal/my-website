@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GE Aerospace Trivia Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- GE Aerospace Logo -->
+        <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/GE_Aerospace_logo.svg/1920px-GE_Aerospace_logo.svg.png
+             alt="GE Aerospace Logo" class="logo">
+ 
+        <h1>GE Aerospace Trivia Quiz</h1>
+       
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+ 
+        <!-- Question Section -->
+        <div id="question-container">
+            <p id="question">Question will appear here</p>
+            <div id="answers">
+                <!-- Answers will be dynamically added here -->
+            </div>
+        </div>
+ 
+        <!-- Buttons -->
+        <button id="submit-button">Submit Answer</button>
+        <p id="feedback" class="hidden"></p>
+        <button id="restart-button" class="hidden">Restart Quiz</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
