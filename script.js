@@ -337,7 +337,7 @@ function clearAdminMessage() {
 
 function verifyAdminPasscode() {
     if (adminPasscodeInput.value !== ADMIN_PASSCODE) {
-        showAdminMessage("Invalid admin passcode.");
+        showAdminMessage("Invalid staff reset code.");
         return false;
     }
     return true;

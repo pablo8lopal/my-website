@@ -84,6 +84,16 @@ body {
     color: var(--text-muted);
 }
 
+.privacy-note {
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f6faff;
+    border: 1px solid #dce9f8;
+    color: #35516d;
+    font-size: 0.9rem;
+}
+
 .input-label {
     display: inline-block;
     margin-bottom: 8px;
