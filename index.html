@@ -1,38 +1,78 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GE Aerospace trivia quiz — test your knowledge of engines, programs, and sites.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
     <title>GE Aerospace Trivia Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="quiz-container">
-        <!-- GE Aerospace Logo -->
-        <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/GE_Aerospace_logo.svg/1920px-GE_Aerospace_logo.svg.png
-             alt="GE Aerospace Logo" class="logo">
- 
-        <h1>GE Aerospace Trivia Quiz</h1>
-       
-        <!-- Progress Bar -->
-        <div class="progress-bar">
-            <div id="progress" class="progress"></div>
-        </div>
- 
-        <!-- Question Section -->
-        <div id="question-container">
-            <p id="question">Question will appear here</p>
-            <div id="answers">
-                <!-- Answers will be dynamically added here -->
+<body data-single-attempt="true">
+    <main class="quiz-card">
+        <header class="quiz-header">
+            <img src="9263f108-2a2f-494a-a136-f444b9f560b2-ge_aerospace_logo.webp"
+                 alt="GE Aerospace" class="logo">
+            <p class="eyebrow">Trivia Quiz</p>
+        </header>
+
+        <section id="entry-panel" class="panel">
+            <h1 class="section-title">GE Aerospace Trivia Challenge</h1>
+            <p class="section-subtitle">Scan the QR code, register your name, and submit your best score.</p>
+            <p class="privacy-note">Only your name and score are stored locally in this browser. No personal data is sent to any backend server.</p>
+            <label for="player-name" class="input-label">Your Name</label>
+            <input id="player-name" class="text-input" type="text" maxlength="30" placeholder="Enter your name">
+            <p id="entry-message" class="status-message hidden"></p>
+            <div class="action-row">
+                <button id="start-quiz-button" type="button" class="btn btn-primary">Start Quiz</button>
+                <button id="view-scoreboard-entry-button" type="button" class="btn btn-secondary">View Scoreboard</button>
             </div>
-        </div>
- 
-        <!-- Buttons -->
-        <button id="submit-button">Submit Answer</button>
-        <p id="feedback" class="hidden"></p>
-        <button id="restart-button" class="hidden">Restart Quiz</button>
-    </div>
+
+            <details class="admin-tools">
+                <summary>Admin Tools</summary>
+                <p class="admin-note">Passcode required. Use this only for onsite reset/support.</p>
+                <label for="admin-passcode" class="input-label">Staff Reset Code</label>
+                <input id="admin-passcode" class="text-input" type="password" placeholder="Enter admin passcode">
+                <p id="admin-message" class="status-message hidden"></p>
+                <div class="action-row">
+                    <button id="admin-clear-lock" type="button" class="btn btn-secondary">Clear Device Lock</button>
+                    <button id="admin-clear-scoreboard" type="button" class="btn btn-secondary">Reset Scoreboard</button>
+                    <button id="admin-clear-all" type="button" class="btn btn-secondary">Reset Both</button>
+                </div>
+            </details>
+        </section>
+
+        <section id="quiz-panel" class="panel hidden">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10">
+                <div id="progress" class="progress-fill"></div>
+            </div>
+
+            <div id="question-container">
+                <p id="question-counter" class="question-counter">Question 1 of 10</p>
+                <p id="question" class="question-text">Question will appear here</p>
+                <div id="answers" class="answers"></div>
+            </div>
+
+            <div id="feedback" class="feedback hidden"></div>
+            <div class="action-row">
+                <button id="restart-button" type="button" class="btn btn-primary hidden">Play Again</button>
+                <button id="view-scoreboard-button" type="button" class="btn btn-secondary hidden">View Scoreboard</button>
+            </div>
+        </section>
+
+        <section id="scoreboard-panel" class="panel hidden">
+            <h2 class="section-title">Scoreboard</h2>
+            <ol id="scoreboard-list" class="scoreboard-list"></ol>
+            <div class="action-row">
+                <button id="back-to-entry-button" type="button" class="btn btn-secondary">Back</button>
+            </div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
