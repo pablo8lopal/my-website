@@ -38,6 +38,14 @@
                 <p class="admin-note">Passcode required. Use this only for onsite reset/support.</p>
                 <label for="admin-passcode" class="input-label">Admin Passcode</label>
                 <input id="admin-passcode" class="text-input" type="password" placeholder="Enter admin passcode">
+                <label for="admin-enable-device-lock" class="input-label">
+                    <input id="admin-enable-device-lock" type="checkbox">
+                    Enable device lock (single attempt per device)
+                </label>
+                <label for="admin-allow-name-replay" class="input-label">
+                    <input id="admin-allow-name-replay" type="checkbox">
+                    Allow replay with the same name
+                </label>
                 <p id="admin-message" class="status-message hidden"></p>
                 <div class="action-row">
                     <button id="admin-clear-lock" type="button" class="btn btn-secondary">Clear Device Lock</button>

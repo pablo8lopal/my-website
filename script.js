@@ -2,12 +2,11 @@
 const QUESTIONS_PER_QUIZ = 10;
 const STORAGE_KEYS = {
     scoreboard: "ge_trivia_scoreboard",
-    deviceLock: "ge_trivia_device_submitted"
+    deviceLock: "ge_trivia_device_submitted",
+    allowSameNameReplay: "ge_trivia_allow_same_name_replay",
+    deviceLockEnabled: "ge_trivia_device_lock_enabled"
 };
 const ADMIN_PASSCODE = "GE-ADMIN-2026";
-
-// Toggle this in index.html by changing: <body data-single-attempt="false">
-const SINGLE_ATTEMPT_MODE = document.body.dataset.singleAttempt === "false";
 
 let questions = [];
 let currentQuestionIndex = 0;
@@ -22,6 +21,8 @@ const scoreboardPanel = document.getElementById("scoreboard-panel");
 const playerNameInput = document.getElementById("player-name");
 const entryMessage = document.getElementById("entry-message");
 const adminPasscodeInput = document.getElementById("admin-passcode");
+const adminEnableDeviceLockInput = document.getElementById("admin-enable-device-lock");
+const adminAllowNameReplayInput = document.getElementById("admin-allow-name-replay");
 const adminMessage = document.getElementById("admin-message");
 const adminClearLockButton = document.getElementById("admin-clear-lock");
 const adminClearScoreboardButton = document.getElementById("admin-clear-scoreboard");
@@ -333,6 +334,35 @@ function saveResult(name, score, total) {
     saveScoreboard(rows);
 }
 
+function normalizeName(value) {
+    return value.trim().toLowerCase();
+}
+
+function nameExistsInScoreboard(name) {
+    const normalized = normalizeName(name);
+    if (!normalized) {
+        return false;
+    }
+
+    return getScoreboard().some((entry) => normalizeName(entry.name) === normalized);
+}
+
+function isSameNameReplayAllowed() {
+    return localStorage.getItem(STORAGE_KEYS.allowSameNameReplay) === "true";
+}
+
+function setSameNameReplayAllowed(isAllowed) {
+    localStorage.setItem(STORAGE_KEYS.allowSameNameReplay, String(isAllowed));
+}
+
+function isDeviceLockEnabled() {
+    return localStorage.getItem(STORAGE_KEYS.deviceLockEnabled) === "true";
+}
+
+function setDeviceLockEnabled(isEnabled) {
+    localStorage.setItem(STORAGE_KEYS.deviceLockEnabled, String(isEnabled));
+}
+
 function isDeviceLocked() {
     return localStorage.getItem(STORAGE_KEYS.deviceLock) === "true";
 }
@@ -343,6 +373,19 @@ function lockDevice() {
 
 function clearDeviceLock() {
     localStorage.removeItem(STORAGE_KEYS.deviceLock);
+}
+
+function updateReplayButtonState() {
+    if (isDeviceLockEnabled() || !isSameNameReplayAllowed()) {
+        restartButton.classList.add("hidden");
+        return;
+    }
+    restartButton.classList.remove("hidden");
+}
+
+function initReplayPolicyControl() {
+    adminEnableDeviceLockInput.checked = isDeviceLockEnabled();
+    adminAllowNameReplayInput.checked = isSameNameReplayAllowed();
 }
 
 function showPanel(panel) {
@@ -379,7 +422,7 @@ function verifyAdminPasscode() {
 }
 
 function updateEntryLockState() {
-    if (SINGLE_ATTEMPT_MODE && isDeviceLocked()) {
+    if (isDeviceLockEnabled() && isDeviceLocked()) {
         startQuizButton.disabled = true;
         showEntryMessage("Quiz already submitted on this device. Single-attempt mode is active.");
     } else {
@@ -415,6 +458,39 @@ function handleAdminClearAll() {
     renderScoreboard();
     updateEntryLockState();
     showAdminMessage("Device lock and scoreboard reset.");
+}
+
+function handleAdminAllowNameReplayChange() {
+    if (!verifyAdminPasscode()) {
+        adminAllowNameReplayInput.checked = isSameNameReplayAllowed();
+        return;
+    }
+
+    setSameNameReplayAllowed(adminAllowNameReplayInput.checked);
+    updateReplayButtonState();
+
+    if (adminAllowNameReplayInput.checked) {
+        showAdminMessage("Replay with the same name is now allowed.");
+    } else {
+        showAdminMessage("Replay with the same name is now blocked.");
+    }
+}
+
+function handleAdminDeviceLockToggle() {
+    if (!verifyAdminPasscode()) {
+        adminEnableDeviceLockInput.checked = isDeviceLockEnabled();
+        return;
+    }
+
+    setDeviceLockEnabled(adminEnableDeviceLockInput.checked);
+    updateEntryLockState();
+    updateReplayButtonState();
+
+    if (adminEnableDeviceLockInput.checked) {
+        showAdminMessage("Device lock is now enabled.");
+    } else {
+        showAdminMessage("Device lock is now disabled.");
+    }
 }
 
 function renderScoreboard() {
@@ -512,12 +588,11 @@ function showSummary() {
 
     viewScoreboardButton.classList.remove("hidden");
 
-    if (SINGLE_ATTEMPT_MODE) {
+    if (isDeviceLockEnabled()) {
         lockDevice();
-        restartButton.classList.add("hidden");
-    } else {
-        restartButton.classList.remove("hidden");
     }
+
+    updateReplayButtonState();
 }
 
 function updateProgress(complete = false) {
@@ -527,7 +602,7 @@ function updateProgress(complete = false) {
 }
 
 function startQuiz() {
-    if (SINGLE_ATTEMPT_MODE && isDeviceLocked()) {
+    if (isDeviceLockEnabled() && isDeviceLocked()) {
         showEntryMessage("This device has already submitted a quiz. Replays are currently disabled.");
         return;
     }
@@ -535,6 +610,11 @@ function startQuiz() {
     const enteredName = playerNameInput.value.trim();
     if (enteredName.length < 2) {
         showEntryMessage("Please enter a valid name (at least 2 characters).");
+        return;
+    }
+
+    if (!isSameNameReplayAllowed() && nameExistsInScoreboard(enteredName)) {
+        showEntryMessage("This name already exists on the scoreboard. Please choose a different name.");
         return;
     }
 
@@ -553,6 +633,25 @@ function startQuiz() {
     loadQuestion();
 }
 
+function handlePlayerNameInput() {
+    if (isDeviceLockEnabled() && isDeviceLocked()) {
+        return;
+    }
+
+    const enteredName = playerNameInput.value.trim();
+    if (enteredName.length < 2) {
+        clearEntryMessage();
+        return;
+    }
+
+    if (!isSameNameReplayAllowed() && nameExistsInScoreboard(enteredName)) {
+        showEntryMessage("This name is already on the scoreboard. Please choose another name.");
+        return;
+    }
+
+    clearEntryMessage();
+}
+
 function openScoreboard() {
     renderScoreboard();
     showPanel(scoreboardPanel);
@@ -560,6 +659,8 @@ function openScoreboard() {
 
 function initApp() {
     showPanel(entryPanel);
+    initReplayPolicyControl();
+    updateReplayButtonState();
     clearEntryMessage();
     clearAdminMessage();
     updateEntryLockState();
@@ -567,12 +668,15 @@ function initApp() {
 
 // === Events ===
 startQuizButton.addEventListener("click", startQuiz);
+playerNameInput.addEventListener("input", handlePlayerNameInput);
 playerNameInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         startQuiz();
     }
 });
 adminPasscodeInput.addEventListener("input", clearAdminMessage);
+adminEnableDeviceLockInput.addEventListener("change", handleAdminDeviceLockToggle);
+adminAllowNameReplayInput.addEventListener("change", handleAdminAllowNameReplayChange);
 adminClearLockButton.addEventListener("click", handleAdminClearLock);
 adminClearScoreboardButton.addEventListener("click", handleAdminClearScoreboard);
 adminClearAllButton.addEventListener("click", handleAdminClearAll);
