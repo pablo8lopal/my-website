@@ -7,7 +7,7 @@ const STORAGE_KEYS = {
 const ADMIN_PASSCODE = "GE-ADMIN-2026";
 
 // Toggle this in index.html by changing: <body data-single-attempt="false">
-const SINGLE_ATTEMPT_MODE = document.body.dataset.singleAttempt === "true";
+const SINGLE_ATTEMPT_MODE = document.body.dataset.singleAttempt === "false";
 
 let questions = [];
 let currentQuestionIndex = 0;
