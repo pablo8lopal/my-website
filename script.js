@@ -46,37 +46,37 @@ const existingQuestions = [
         { question: "What year was GE Aerospace founded?", answers: ["1905", "1932", "1917", "1945"], correct: 2 },
         { question: "What is GE Aerospace's primary focus?", answers: ["Aircraft interiors", "Navigation systems", "Jet engines", "Satellites"], correct: 2 },
         { question: "What is the name of GE Aerospace's lean operating model?", answers: ["SkyDeck", "AeroLean", "FLIGHT DECK", "JetStream"], correct: 2 },
-        { question: "Which GE Aerospace engine powers the Boeing 777?", answers: ["CF6", "LEAP", "GE90", "GE9X"], correct: 2 },
         { question: "What is the world's most powerful jet engine?", answers: ["GE9X", "LEAP", "GE90", "CF34"], correct: 2 },
         { question: "What is GE Aerospace's commitment to sustainability?", answers: ["Supersonic aircraft", "Space exploration engines", "Sustainable aviation technologies", "Electric cars"], correct: 2 },
         //{ question: "Which engine is used in military applications like the F/A-18 Hornet?", answers: ["GE90", "F404", "CF34", "LEAP"], correct: 1 },
         { question: "What is the significance of the LEAP engine?", answers: ["Most powerful jet engine", "Exclusively for military aircraft", "Fuel efficiency and reduced emissions", "First electric jet engine"], correct: 2 },
         { question: "What are GE Aerospace's priorities in order?", answers: ["Cost, Delivery, Quality, Safety", "Quality, Safety, Delivery, Cost", "Safety, Quality, Delivery, Cost", "Delivery, Cost, Safety, Quality"], correct: 2 },
         //{ question: "Which GE Aerospace engine powers the Boeing 787 Dreamliner?", answers: ["GE90", "LEAP", "CF34", "GEnx"], correct: 3 },
-        { question: "Which GE Aerospace engine is used in regional jets?", answers: ["GE9X", "GE90", "LEAP", "CF34"], correct: 3 },
-        { question: "What is GE Aerospace's approach to lean manufacturing?", answers: ["Kaizen", "Six Sigma", "FLIGHT DECK", "Hoshin Kanri"], correct: 2 },
-        { question: "Which engine powers the Boeing 737 MAX?", answers: ["CF6", "GE90", "LEAP", "GEnx"], correct: 2 },
+        //{ question: "What is GE Aerospace's approach to lean manufacturing?", answers: ["Kaizen", "Six Sigma", "FLIGHT DECK", "Hoshin Kanri"], correct: 2 },
         { question: "What is the name of GE Aerospace's advanced materials program?", answers: ["NanoMaterials", "Carbon Fiber Composites", "Metallic Alloys", "Ceramic Matrix Composites"], correct: 3 },
-        { question: "Which GE Aerospace engine is used in business jets?", answers: ["CF34", "LEAP", "GE90", "Passport"], correct: 3 },
         //{ question: "What is GE Aerospace's focus for future aviation?", answers: ["Supersonic jets", "Electric cars", "Space exploration", "Sustainable aviation fuels"], correct: 3 },
-        { question: "Which engine powers the Airbus A320neo?", answers: ["CF6", "GE90", "LEAP", "GEnx"], correct: 2 },
         { question: "What is the name of GE Aerospace's additive manufacturing program?", answers: ["AdditiveWorks", "MetalPrint", "3D Aero", "GE Additive"], correct: 3 },
         { question: "What is the primary focus of GE Aerospace's Munich site?", answers: ["Jet engine manufacturing", "Navigation systems", "Aircraft interiors", "Research and development"], correct: 3 },
         { question: "Which advanced technology is developed at GE Aerospace's Munich site?", answers: ["Ceramic Matrix Composites", "Space exploration engines", "Supersonic engines", "Hybrid-electric propulsion"], correct: 3 },
         { question: "What is the name of the GE Aerospace Munich site?", answers: ["GE Aviation Munich", "GE Aerospace Research Center", "GE Aerospace Advanced Technology Center", "GE Munich Innovation Hub"], correct: 2 },
-        { question: "In which country is GE Aerospace's Munich site located?", answers: ["France", "Austria", "Switzerland", "Germany"], correct: 3 },
+        //{ question: "In which country is GE Aerospace's Munich site located?", answers: ["France", "Austria", "Switzerland", "Germany"], correct: 3 },
         { question: "What type of collaboration is GE Aerospace's Munich site known for?", answers: ["Space exploration", "Military contracts", "Commercial engine production", "University partnerships"], correct: 3 },
         { question: "Which propulsion system is being researched at GE Aerospace Munich?", answers: ["Hydrogen propulsion", "Supersonic propulsion", "Nuclear propulsion", "Hybrid-electric propulsion"], correct: 3 },
-        { question: "What is a key sustainability focus at GE Aerospace Munich?", answers: ["Space exploration", "Electric aircraft", "Carbon-neutral manufacturing", "Sustainable aviation fuels"], correct: 3 },
+        //{ question: "What is a key sustainability focus at GE Aerospace Munich?", answers: ["Space exploration", "Electric aircraft", "Carbon-neutral manufacturing", "Sustainable aviation fuels"], correct: 3 },
         { question: "How does GE Aerospace Munich contribute to GE's global operations?", answers: ["By manufacturing jet engines", "By building satellites", "By producing navigation systems", "By conducting advanced research"], correct: 3 },
         { question: "What is the role of GE Aerospace Munich in hybrid-electric propulsion?", answers: ["Testing", "Marketing", "Manufacturing", "Research and development"], correct: 3 },
-        { question: "Which European city is home to GE Aerospace's advanced technology center?", answers: ["Berlin", "Hamburg", "Frankfurt", "Munich"], correct: 3 },
+        { question: "Which European city is home to GE Aerospace's advanced technology center?", answers: ["Berlin", "Touluse", "Madrid", "Munich"], correct: 3 },
         //{ question: "What is GE Aerospace's approach to sustainability?", answers: ["Supersonic jets", "Electric cars", "Space exploration", "Sustainable aviation fuels"], correct: 3 },
+        { question: "Which GE Aerospace engine is used in regional jets?", answers: ["GE9X", "GE90", "LEAP", "CF34"], correct: 3 },
+        { question: "Which GE Aerospace engine is used in business jets?", answers: ["CF34", "LEAP", "GE90", "Passport"], correct: 3 },        
+        { question: "Which engine powers the Boeing 737 MAX?", answers: ["CF6", "GE90", "LEAP", "GEnx"], correct: 2 },        
+        { question: "Which GE Aerospace engine powers the Boeing 777?", answers: ["CF6", "LEAP", "GE90", "GE9X"], correct: 2 },
         { question: "Which GE Aerospace engine powers the Boeing 747?", answers: ["CF6", "GE90", "LEAP", "GEnx"], correct: 0 },
-        { question: "Which GE Aerospace engine is used in the F-16 fighter jet?", answers: ["F404", "F110", "CF34", "GE90"], correct: 1 },
+        { question: "Which engine powers the Airbus A320neo?", answers: ["CF6", "GE90", "LEAP", "GEnx"], correct: 2 },
+        //{ question: "Which GE Aerospace engine is used in the F-16 fighter jet?", answers: ["F404", "F110", "CF34", "GE90"], correct: 1 },
         { question: "What is GE Aerospace's focus for future propulsion systems?", answers: ["Hybrid-electric propulsion", "Supersonic propulsion", "Nuclear propulsion", "Hydrogen propulsion"], correct: 0 },
         { question: "Which GE Aerospace engine powers the Boeing 777X?", answers: ["GE90", "GE9X", "LEAP", "CF6"], correct: 1 },
-        { question: "What is the name of GE Aerospace's sustainability initiative?", answers: ["GE Green Aviation", "GE Sustainable Flight", "GE Aviation Sustainability", "GE Aerospace EcoFlight"], correct: 1 },
+        //{ question: "What is the name of GE Aerospace's sustainability initiative?", answers: ["GE Green Aviation", "GE Sustainable Flight", "GE Aviation Sustainability", "GE Aerospace EcoFlight"], correct: 1 },
         { question: "Which GE Aerospace engine is used in the Embraer E-Jet series?", answers: ["CF34", "Passport", "GE90", "LEAP"], correct: 0 },
         { question: "What is GE Aerospace's focus for additive manufacturing?", answers: ["Ceramic Matrix Composites", "3D printing", "Carbon Fiber Composites", "NanoMaterials"], correct: 1 },
         { question: "Which GE Aerospace engine powers the Boeing 767?", answers: ["GE90", "GEnx", "LEAP", "CF6"], correct: 3 },
@@ -85,11 +85,11 @@ const existingQuestions = [
         { question: "Which city is home to GE Aerospace's headquarters?", answers: ["Cincinnati", "Munich", "Paris", "Boston"], correct: 0 },
         { question: "How many GE Aerospace sites are there worldwide?", answers: ["50", "75", "100", "125"], correct: 2 },
         { question: "Which of the following is NOT a GE Aerospace site?", answers: ["Munich", "Evendale", "Bangalore", "Seattle"], correct: 3 },
-        { question: "What is the primary focus of GE Aerospace's Bangalore site?", answers: ["Manufacturing", "Research and development", "Engine testing", "Marketing"], correct: 1 },
+        //{ question: "What is the primary focus of GE Aerospace's Bangalore site?", answers: ["Manufacturing", "Research and development", "Engine testing", "Marketing"], correct: 1 },
         { question: "Which GE Aerospace site specializes in additive manufacturing?", answers: ["Munich", "Evendale", "Bangalore", "West Chester"], correct: 1 },
         { question: "In which continent does GE Aerospace have the most sites?", answers: ["North America", "Europe", "Asia", "South America"], correct: 0 },
         { question: "Which GE Aerospace site is known for its work on hybrid-electric propulsion?", answers: ["Munich", "Bangalore", "Evendale", "Lynn"], correct: 0 },
-        { question: "What is the role of GE Aerospace's Lynn site?", answers: ["Military engine production", "Commercial engine production", "Research and development", "Additive manufacturing"], correct: 0 },
+        //{ question: "What is the role of GE Aerospace's Lynn site?", answers: ["Military engine production", "Commercial engine production", "Research and development", "Additive manufacturing"], correct: 0 },
         { question: "Which of the following engines is NOT produced by GE Aerospace?", answers: ["GE90", "LEAP", "PW1000G", "GEnx"], correct: 2 },
         { question: "Which of the following engines is produced by CFM International?", answers: ["GE90", "LEAP", "CF6", "GEnx"], correct: 1 },
         { question: "What does CFM stand for in CFM International?", answers: ["Commercial Flight Motors", "Collaborative Flight Manufacturing", "Customer Focused Manufacturing", "Nothing (it's a combination of GE and Safran names)"], correct: 3 },
@@ -293,9 +293,102 @@ const newQuestions = [
         }
 ];
 
+const wordQuestions = [
+        {
+            question: "At any given moment, about what share of planes flying worldwide are powered by GE Aerospace and CFM engines?",
+            answers: ["1 out of 2", "2 out of 3", "3 out of 4", "9 out of 10"],
+            correct: 2
+        },
+        {
+            question: "In how many European countries does GE Aerospace operate?",
+            answers: ["12", "18", "24", "30"],
+            correct: 1
+        },
+        {
+            question: "Approximately how many GE Aerospace employees are based across Europe?",
+            answers: ["8,000", "10,500", "12,000", "13,000"],
+            correct: 3
+        },
+        {
+            question: "How many apprenticeships per year does GE Aerospace support across Europe?",
+            answers: ["50", "75", "90", "100"],
+            correct: 3
+        },
+        {
+            question: "How much is GE Aerospace investing in European manufacturing in 2026?",
+            answers: ["EUR 40 million", "EUR 75 million", "EUR 110+ million", "EUR 200 million"],
+            correct: 2
+        },
+        {
+            question: "How much is GE Aerospace investing across European MRO and component repair facilities in 2026?",
+            answers: ["EUR 20 million", "EUR 40 million", "EUR 60 million", "EUR 80 million"],
+            correct: 1
+        },
+        {
+            question: "About how much does GE Aerospace spend globally on R&D each year?",
+            answers: ["USD 1 billion", "USD 2 billion", "USD 2.5 billion", "USD 3 billion"],
+            correct: 3
+        },
+        {
+            question: "The most recently introduced GE Aerospace commercial engine products are approximately how much more fuel efficient than their predecessors?",
+            answers: ["5-8%", "10-15%", "18-20%", "25-30%"],
+            correct: 1
+        },
+        {
+            question: "How long has CFM partnered with Safran Aircraft Engines?",
+            answers: ["About 20 years", "About 35 years", "About 50+ years", "About 70 years"],
+            correct: 2
+        },
+        {
+            question: "Roughly how many aircraft have been delivered globally with CFM56 engines?",
+            answers: ["4,500+", "8,000+", "10,000+", "14,000+"],
+            correct: 3
+        },
+        {
+            question: "In what year was the CFM RISE program unveiled?",
+            answers: ["2018", "2021", "2022", "2023"],
+            correct: 1
+        },
+        {
+            question: "What fuel-efficiency improvement is GE Aerospace targeting in one generation with RISE technologies versus engines today?",
+            answers: ["10%", "15%", "20%", "35%"],
+            correct: 2
+        },
+        {
+            question: "Which architecture is described as the most promising path for next-generation engine efficiency?",
+            answers: ["Open Fan", "Geared turbofan", "Variable bypass fan", "Ramjet hybrid"],
+            correct: 0
+        },
+        {
+            question: "Which country is specifically cited for major low-pressure turbine module testing for RISE?",
+            answers: ["Poland", "Sweden", "Italy", "Germany"],
+            correct: 0
+        },
+        {
+            question: "GE Aerospace is collaborating with which airframer on engine and aircraft integration work for a flight demonstrator this decade?",
+            answers: ["Airbus", "Boeing", "Embraer", "Dassault"],
+            correct: 0
+        },
+        {
+            question: "Which certified engine is highlighted as designed, developed, and tested in Europe?",
+            answers: ["Catalyst", "Passport", "LEAP", "GE9X"],
+            correct: 0
+        },
+        {
+            question: "In which Clean Aviation project is GE Aerospace not involved?",
+            answers: ["OFELIA", "UNIFIED", "AMBER", "HYDEA"],
+            correct: 1
+        },
+        {
+            question: "Which set of technologies is NOT being investigated in the RISE technology program?",
+            answers: ["Open Fan", "Compact Core", "Hybrid Electric", "Variable Cycle"],
+            correct: 3
+        }
+];
+
 // === Pool Builder ===
 function buildQuestionPool() {
-    const all = [...existingQuestions, ...riseQuestions, ...newQuestions];
+    const all = [...existingQuestions, ...riseQuestions, ...newQuestions, ...wordQuestions];
     const seen = new Set();
     return all.filter((item) => {
         const key = item.question.trim().toLowerCase();
